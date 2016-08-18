@@ -1,1 +1,36 @@
-myCarsAPI Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Simple Test Page for UDS Client</title>
+	<!--<script src="dist/mycars-client-api.js"></script>-->
+	<script src="https://uds.dev.int.dealer.com/mycars-client-api.js"></script>
+	<!--<script src="https://uds.dealer.com/mycars-client-api.js"></script>-->
+	<script type="text/javascript">
+		var DDC = DDC || {};
+		DDC.UDS = DDC.UDS || {};
+		DDC.UDS.appId = 'mycars';
+	</script>
+</head>
+<body>
+	<marquee><h1>VTMS</h1></marquee>
+	<h1>MyCars Iframe Test Page</h1>
+	<p id="message"></p>
+	<script type="text/javascript">
+		function onUserLoginStatusReceived(isLoggedIn) {
+			document.getElementById('message').innerHTML = "User is logged in " + isLoggedIn;
+			if (!isLoggedIn && !document.getElementById('login')) {
+				var btn = document.createElement("button");
+				var t = document.createTextNode("Login");
+				btn.setAttribute("id", "login");
+				btn.appendChild(t);
+				document.body.appendChild(btn);
+				btn.onclick = function() {
+					DDC.MyCars.CLIENT_API.promptUserLogin();
+				};
+			}
+		}
+		DDC.MyCars.CLIENT_API.addUserLoginStatusListener(onUserLoginStatusReceived);
+	</script>
+</body>
+</html>
