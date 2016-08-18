@@ -11,9 +11,28 @@
 		DDC.UDS = DDC.UDS || {};
 		DDC.UDS.appId = 'mycars';
 	</script>
+	<style type="text/css">
+	.funky{
+	
+		animation: skew 0.75s infinite;
+  		animation-direction: alternate;
+	}
+	@keyframes skew {
+	  0% {
+	    
+	    transform: skewY(0.5deg);
+	  }
+	  100% {
+	   
+	    transform: skewY(-0.5deg);
+	  }
+	}
+
+
+	</style>
 </head>
 <body>
-	<marquee><h1>VTMS</h1></marquee>
+	<h1 class="funky">VTMS</h1>
 	<h1>MyCars Iframe Test Page</h1>
 	<p id="message"></p>
 	<script type="text/javascript">
