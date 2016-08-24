@@ -14,27 +14,40 @@
 	<style type="text/css">
 	.funky{
 	
-		animation: skew 0.75s infinite;
+		animation: translate 0.75s infinite;
   		animation-direction: alternate;
 	}
-	@keyframes skew {
+	@keyframes translate {
 	  0% {
 	    
-	    transform: skewY(0.5deg);
+	    transform: translateY(10px);
 	  }
 	  100% {
 	   
-	    transform: skewY(-0.5deg);
+	    transform: translateY(-10px);
 	  }
+	}
+
+	body {
+		text-align: center;
+		background: url('http://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg');
+	}
+
+	.container {
+		transform: translateY(50%);
 	}
 
 
 	</style>
 </head>
 <body>
+
+<div class="container">
 	<h1 class="funky">VTMS</h1>
 	<h1>MyCars Iframe Test Page</h1>
 	<p id="message"></p>
+</div>
+	
 	<script type="text/javascript">
 		function onUserLoginStatusReceived(isLoggedIn) {
 			document.getElementById('message').innerHTML = "User is logged in " + isLoggedIn;
