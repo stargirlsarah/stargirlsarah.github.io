@@ -68,7 +68,8 @@
 	
 	<script type="text/javascript">
 		function onUserLoginStatusReceived(isLoggedIn) {
-			document.getElementById('message').innerHTML = "User is logged in " +  isLoggedIn
+			var status = isLoggedIn.toString().toUpperCase();
+			document.getElementById('message').innerHTML = "User is logged in " +  status
 			if (!isLoggedIn && !document.getElementById('login')) {
 				var btn = document.createElement("button");
 				var t = document.createTextNode("Login");
