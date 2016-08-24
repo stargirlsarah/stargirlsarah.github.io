@@ -33,8 +33,12 @@
 		background: url('http://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg');
 	}
 
-	.container {
+	#container {
 		transform: translateY(50%);
+	}
+
+	#message{
+		font-size: 22px; 
 	}
 
 
@@ -42,10 +46,12 @@
 </head>
 <body>
 
-<div class="container">
+<div id="container">
 	<h1 class="funky">VTMS</h1>
 	<h1>MyCars Iframe Test Page</h1>
-	<p id="message"></p>
+	<p id="message">
+		
+	</p>
 </div>
 	
 	<script type="text/javascript">
@@ -56,7 +62,7 @@
 				var t = document.createTextNode("Login");
 				btn.setAttribute("id", "login");
 				btn.appendChild(t);
-				document.body.appendChild(btn);
+				document.getElementById('container').appendChild(btn);
 				btn.onclick = function() {
 					DDC.MyCars.CLIENT_API.promptUserLogin();
 				};
