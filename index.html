@@ -50,6 +50,7 @@
 		padding: 8px 20px;
 		font-size: 16px;
 		text-align: center;
+		border: none;
 	}
 
 
@@ -67,7 +68,7 @@
 	
 	<script type="text/javascript">
 		function onUserLoginStatusReceived(isLoggedIn) {
-			document.getElementById('message').innerHTML = "User is logged in " + isLoggedIn;
+			document.getElementById('message').innerHTML = "User is logged in " + isLoggedIn.toUpperCase();
 			if (!isLoggedIn && !document.getElementById('login')) {
 				var btn = document.createElement("button");
 				var t = document.createTextNode("Login");
