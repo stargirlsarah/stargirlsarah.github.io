@@ -76,7 +76,7 @@
 				};
 			}
 		}
-		if (!DDC || !DDC.MyCars || !DDC.MyCars.CLIENT_API) {
+		if (typeof DDC == "undefined" || typeof DDC.MyCars == "undefined" || typeof DDC.MyCars.CLIENT_API == "undefined") {
 			var apiSource = document.getElementById("myCarsClientScript").src
 			document.getElementById('message').innerHTML = "MyCars API not loaded.  You may need to accept the certificate from <a href=\"" + apiSource+ "\">" + apiSource + "</a>";
 		}
