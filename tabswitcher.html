@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+To test locally:
+Create a symlink to this file:
+ln -s /path-to-this-file /Library/WebServer/Documents
+Create a hosts file entry:
+127.0.0.1 test.dealertrackcanada.com
+Open this URL in a browser and accept the certificate:
+https://test.dealertrackcanada.com
+Update local DVS to use this URL in the DT canada iframe tabs:
+<preference name='src' value='//test.dealertrackcanada.com/index.html?id=FINANCE_DRIVER_XYZ'/>
+Replace XYZ in the above preferences to something identifiable for each tab (the id parameter isn't used by code, it is just displayed on the page so you know which iframe is being shown)
+-->
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$('#urlDisplay').html('<h3>' + window.location.href + '</h3>');
+			$('.tabSwitcher').click(function() {
+				var target = $(this).attr("data-target");
+				parent.postMessage(JSON.stringify({ messageType: "changeTab", target: target }), "*");
+			});
+		});
+	</script>
+</head>
+<body>
+<h1>DR Canada Test Page</h1>
+<div id="urlDisplay"></div>
+<button class="tabSwitcher" type="button" data-target="payment">Click to change to the PAYMENT tab</button>
+<button class="tabSwitcher" type="button" data-target="prequal">Click to change to the PREQUAL tab</button>
+<button class="tabSwitcher" type="button" data-target="finance">Click to change to the FINANCE tab</button>
+<button class="tabSwitcher" type="button" data-target="xyz">Click to change to an invalid tab</button>
+</body>
+</html>
