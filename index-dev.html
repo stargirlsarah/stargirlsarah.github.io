@@ -83,13 +83,7 @@
 			document.getElementById('reserve-tool').classList.remove(!userProfile.isReserveComplete()).add(userProfile.isReserveComplete());
 			document.getElementById('protect-tool').classList.remove(!userProfile.isProtectComplete()).add(userProfile.isProtectComplete());
 
-			console.log(userProfile.getContactInfo());
-			console.log(userProfile.isTradeComplete());
-			console.log(userProfile.isPaymentComplete());
-			console.log(userProfile.isPrequalComplete());
-			console.log(userProfile.isCreditComplete());
-			console.log(userProfile.isReserveComplete());
-			console.log(userProfile.isProtectComplete());
+			console.log("getContactInfo: "+userProfile.getContactInfo());
 
 		}
 
