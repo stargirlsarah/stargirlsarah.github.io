@@ -24,8 +24,6 @@
 			background: red;
 		}
 	</style>
-
-	</style>
 </head>
 <body>
 
@@ -57,20 +55,24 @@
 </div>
 	
 	<script type="text/javascript">
+
 		function onUserLoginStatusReceived(isLoggedIn) {
-			var status = isLoggedIn.toString().toUpperCase();
-			document.getElementById('message').innerHTML = "User is logged in " +  status
+
+			document.getElementById('userLoginMessage').innerHTML = "User is logged in " + isLoggedIn;
+
 			if (!isLoggedIn && !document.getElementById('login')) {
 				var btn = document.createElement("button");
 				var t = document.createTextNode("Login");
 				btn.setAttribute("id", "login");
 				btn.appendChild(t);
-				document.getElementById('container').appendChild(btn);
+				document.getElementById("userLoginMessage").appendChild(btn);
+
 				btn.onclick = function() {
 					DDC.MyCars.CLIENT_API.promptUserLogin();
 				};
 			}
 		}
+
 		function onUserProfileReceived(userProfile) {
 			document.getElementById('userProfileMessage').innerHTML = "User profile:<br>" + JSON.stringify(userProfile);
 			
@@ -90,13 +92,16 @@
 			console.log(userProfile.isProtectComplete());
 
 		}
+
 		if (typeof DDC == "undefined" || typeof DDC.MyCars == "undefined" || typeof DDC.MyCars.CLIENT_API == "undefined") {
 			var apiSource = document.getElementById("myCarsClientScript").src
-			document.getElementById('message').innerHTML = "MyCars API not loaded.  You may need to accept the certificate from <a href=\"" + apiSource+ "\">" + apiSource + "</a>";
+			document.getElementById('generalMessage').innerHTML = "MyCars API not loaded.  You may need to accept the certificate from <a href=\"" + apiSource+ "\">" + apiSource + "</a>";
 		}
 		else {
 			DDC.MyCars.CLIENT_API.addUserLoginStatusListener(onUserLoginStatusReceived);
+			DDC.MyCars.CLIENT_API.addUserProfileListener(onUserProfileReceived);
 		}
+
 	</script>
 </body>
 </html>
