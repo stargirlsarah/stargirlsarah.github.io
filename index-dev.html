@@ -7,58 +7,53 @@
 	<script id="myCarsClientScript" src="https://uds.dev.int.dealer.com/mycars-client-api.js"></script>
 	<!--<script src="https://uds.dealer.com/mycars-client-api.js"></script>-->
 	<style type="text/css">
-	.funky{
-	
-		animation: translate 0.75s infinite;
-  		animation-direction: alternate;
-	}
-	@keyframes translate {
-	  0% {
-	    
-	    transform: translateY(10px);
-	  }
-	  100% {
-	   
-	    transform: translateY(-10px);
-	  }
-	}
-
-	body {
-		text-align: center;
-		background: url('https://www.planwallpaper.com/static/images/Alien_Ink_2560X1600_Abstract_Background_1.jpg');
-	}
-
-	#container {
-		transform: translateY(50%);
-	}
-
-	#message{
-		font-size: 25px; 
-		color: white;
-	}
-	button {
-		background: linear-gradient(#3d85c6, #073763);
-		border-radius: 5px;
-		border-top: 15px;
-		color: #fff;
-		display: inline-block;
-		padding: 8px 20px;
-		font-size: 16px;
-		text-align: center;
-		border: none;
-	}
-
+	.tools{
+			padding: 20px;
+		}
+		.tools div{
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			border: 1px solid black;
+			color: white;
+		}
+		.tools div.true{
+			background: green;
+		}
+		.tools div.false{
+			background: red;
+		}
+	</style>
 
 	</style>
 </head>
 <body>
 
 <div id="container">
-	<h1 class="funky">DEV</h1>
 	<h1>MyCars Iframe Test Page</h1>
-	<p id="message">
-		
-	</p>
+	<p id="generalMessage"></p>
+	<p id="userLoginMessage"></p>
+	<code id="userProfileMessage"></code>
+	<div class="tools">
+		<div id="trade-tool">
+			trade
+		</div>	
+		<div id="prequal-tool">
+			prequal
+		</div>
+		<div id="payment-tool">
+			payment
+		</div>
+		<div id="credit-tool">
+			credit
+		</div>
+		<div id="reserve-tool">
+			reserve
+		</div>
+		<div id="protect-tool">
+			protect
+		</div>
+	</div>
 </div>
 	
 	<script type="text/javascript">
@@ -75,6 +70,25 @@
 					DDC.MyCars.CLIENT_API.promptUserLogin();
 				};
 			}
+		}
+		function onUserProfileReceived(userProfile) {
+			document.getElementById('userProfileMessage').innerHTML = "User profile:<br>" + JSON.stringify(userProfile);
+			
+			document.getElementById('trade-tool').classList.add(userProfile.isTradeComplete());
+			document.getElementById('prequal-tool').classList.add(userProfile.isPrequalComplete());
+			document.getElementById('payment-tool').classList.add(userProfile.isPaymentComplete());
+			document.getElementById('credit-tool').classList.add(userProfile.isCreditComplete());
+			document.getElementById('reserve-tool').classList.add(userProfile.isReserveComplete());
+			document.getElementById('protect-tool').classList.add(userProfile.isProtectComplete());
+
+			console.log(userProfile.getContactInfo());
+			console.log(userProfile.isTradeComplete());
+			console.log(userProfile.isPaymentComplete());
+			console.log(userProfile.isPrequalComplete());
+			console.log(userProfile.isCreditComplete());
+			console.log(userProfile.isReserveComplete());
+			console.log(userProfile.isProtectComplete());
+
 		}
 		if (typeof DDC == "undefined" || typeof DDC.MyCars == "undefined" || typeof DDC.MyCars.CLIENT_API == "undefined") {
 			var apiSource = document.getElementById("myCarsClientScript").src
