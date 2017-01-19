@@ -5,6 +5,7 @@
 	<title>Simple Test Page for UDS Client</title>
 	<!--<script src="dist/mycars-client-api.js"></script>-->
 	<script id="myCarsClientScript" src="https://uds.dev.int.dealer.com/mycars-client-api.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!--<script src="https://uds.dealer.com/mycars-client-api.js"></script>-->
 	<style type="text/css">
 	.tools{
@@ -76,12 +77,19 @@
 		function onUserProfileReceived(userProfile) {
 			document.getElementById('userProfileMessage').innerHTML = "User profile:<br>" + JSON.stringify(userProfile);
 			
-			document.getElementById('trade-tool').classList.remove(!userProfile.isTradeComplete()).add(userProfile.isTradeComplete());
-			document.getElementById('prequal-tool').classList.remove(!userProfile.isPrequalComplete()).add(userProfile.isPrequalComplete());
-			document.getElementById('payment-tool').classList.remove(!userProfile.isPaymentComplete()).add(userProfile.isPaymentComplete());
-			document.getElementById('credit-tool').classList.remove(!userProfile.isCreditComplete()).add(userProfile.isCreditComplete());
-			document.getElementById('reserve-tool').classList.remove(!userProfile.isReserveComplete()).add(userProfile.isReserveComplete());
-			document.getElementById('protect-tool').classList.remove(!userProfile.isProtectComplete()).add(userProfile.isProtectComplete());
+			// document.getElementById('trade-tool').classList.remove(!userProfile.isTradeComplete()).add(userProfile.isTradeComplete());
+			// document.getElementById('prequal-tool').classList.remove(!userProfile.isPrequalComplete()).add(userProfile.isPrequalComplete());
+			// document.getElementById('payment-tool').classList.remove(!userProfile.isPaymentComplete()).add(userProfile.isPaymentComplete());
+			// document.getElementById('credit-tool').classList.remove(!userProfile.isCreditComplete()).add(userProfile.isCreditComplete());
+			// document.getElementById('reserve-tool').classList.remove(!userProfile.isReserveComplete()).add(userProfile.isReserveComplete());
+			// document.getElementById('protect-tool').classList.remove(!userProfile.isProtectComplete()).add(userProfile.isProtectComplete());
+
+			$("#trade-tool").removeClass(!userProfile.isTradeComplete()).addClass(userProfile.isTradeComplete());
+			$("#prequal-tool").removeClass(!userProfile.isPrequalComplete()).addClass(userProfile.isPrequalComplete());
+			$("#payment-tool").removeClass(!userProfile.isPaymentComplete()).addClass(userProfile.isPaymentComplete());
+			$("#credit-tool").removeClass(!userProfile.isCreditComplete()).addClass(userProfile.isCreditComplete());
+			$("#reserve-tool").removeClass(!userProfile.isReserveComplete()).addClass(userProfile.isReserveComplete());
+			$("#protect-tool").removeClass(!userProfile.isProtectComplete()).addClass(userProfile.isProtectComplete());
 
 			console.log("getContactInfo: "+userProfile.getContactInfo());
 
