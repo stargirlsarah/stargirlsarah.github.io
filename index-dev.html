@@ -74,12 +74,20 @@
 		function onUserProfileReceived(userProfile) {
 			document.getElementById('userProfileMessage').innerHTML = "User profile:<br>" + JSON.stringify(userProfile);
 			
-			// document.getElementById('trade-tool').classList.remove(!userProfile.isTradeComplete()).add(userProfile.isTradeComplete());
-			// document.getElementById('prequal-tool').classList.remove(!userProfile.isPrequalComplete()).add(userProfile.isPrequalComplete());
-			// document.getElementById('payment-tool').classList.remove(!userProfile.isPaymentComplete()).add(userProfile.isPaymentComplete());
-			// document.getElementById('credit-tool').classList.remove(!userProfile.isCreditComplete()).add(userProfile.isCreditComplete());
-			// document.getElementById('reserve-tool').classList.remove(!userProfile.isReserveComplete()).add(userProfile.isReserveComplete());
-			// document.getElementById('protect-tool').classList.remove(!userProfile.isProtectComplete()).add(userProfile.isProtectComplete());
+			document.getElementById('trade-tool').classList.remove(!userProfile.isTradeComplete())
+			document.getElementById('trade-tool').add(userProfile.isTradeComplete());
+			document.getElementById('prequal-tool').classList.remove(!userProfile.isPrequalComplete())
+			document.getElementById('prequal-tool').add(userProfile.isPrequalComplete());
+			document.getElementById('payment-tool').classList.remove(!userProfile.isPaymentComplete())
+			document.getElementById('payment-tool').add(userProfile.isPaymentComplete());
+			document.getElementById('credit-tool').classList.remove(!userProfile.isCreditComplete())
+			document.getElementById('credit-tool').add(userProfile.isCreditComplete());
+			document.getElementById('reserve-tool').classList.remove(!userProfile.isReserveComplete())
+			document.getElementById('reserve-tool').add(userProfile.isReserveComplete());
+			document.getElementById('protect-tool').classList.remove(!userProfile.isProtectComplete())
+			document.getElementById('protect-tool').add(userProfile.isProtectComplete());
+
+
 
 
 			console.log("getContactInfo: "+userProfile.getContactInfo());
